@@ -1,24 +1,36 @@
-import logo from './logo.svg';
+import { useEffect, useState } from 'react';
 import './App.css';
-
+import Home from './components/Home';
+import {BrowserRouter,Route,Routes} from 'react-router-dom'
+import Welcome from './components/Welcome';
 function App() {
+    const [latlog,setlatlog] = useState({
+      lat:0,
+      log:0
+    });  
+    const fncall = ()=>{
+      if(navigator.geolocation) {
+         navigator.geolocation.getCurrentPosition((data) => {
+          setlatlog({
+            lat:data.coords.latitude,
+            log:data.coords.longitude
+          })
+        }
+        )
+      }
+    }
+    useEffect(()=>{
+      fncall()
+    },[]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Welcome/>}></Route>
+      <Route path='/weather' element={<Home latitude={latlog.lat} longitude={latlog.log}/>}></Route>
+    </Routes>
+    </BrowserRouter>
+    </>
   );
 }
 
