@@ -26,8 +26,8 @@ function App() {
     <>
     <BrowserRouter>
     <Routes>
-      <Route index element={<Welcome/>}></Route>
-      <Route path='/weather' element={<Home latitude={latlog.lat} longitude={latlog.log}/>}></Route>
+      <Route path='/weather-app' element={<Welcome/>}></Route>
+      <Route path='/weather-app/weather' element={<Home latitude={latlog.lat} longitude={latlog.log}/>}></Route>
     </Routes>
     </BrowserRouter>
     </>
