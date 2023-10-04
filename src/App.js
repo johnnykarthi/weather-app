@@ -26,7 +26,7 @@ function App() {
     <>
     <BrowserRouter>
     <Routes>
-      <Route path='/' element={<Welcome/>}></Route>
+      <Route index element={<Welcome/>}></Route>
       <Route path='/weather' element={<Home latitude={latlog.lat} longitude={latlog.log}/>}></Route>
     </Routes>
     </BrowserRouter>

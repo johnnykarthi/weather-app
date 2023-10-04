@@ -19,7 +19,7 @@ export default function Welcome() {
             </div>
     
             <div className="main-button">
-                <Link to='/weather'>
+                <Link to='weather'>
                     <button className="btn-main">Get start</button>
                 </Link>
             </div>
